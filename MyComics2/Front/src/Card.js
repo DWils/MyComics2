@@ -1,58 +1,33 @@
 import React, { useState, useEffect } from 'react'
-import Star from './Star'
+import { Fragment } from 'react'
+import Detail from './Detail'
+
+
 
 const Card = props => {
 
-    const [favColor, setFavColor] = useState("lightGrey");
-    const [favourites , setFavourites] = useState(()=> {
-        const localData = localStorage.getItem('favourites');
-        return localData ? JSON.parse(localData) : [];
-    })
+    const [favList,setFavList] = useState(props.favourites.some(fav => fav.title == props.comic.title)) 
+    const [openDetail, setOpenDetail] = useState(false)
 
-    useEffect(() => {
-        localStorage.setItem('favourites', JSON.stringify(favourites))
-    }, [favourites]);
-
-    const manageFavorites = comicName =>{
-        if (favColor == "lightGrey") {
-            setFavColor("gold");
-            addFav(comicName)
-        }else{
-            setFavColor("lightGrey");  
-            removeFav(comicName)
-        }
-    }
-
-    const addFav = comicName => {
-        if(favourites.indexOf(comicName) === -1){
-            favourites.push(comicName)
-            sessionStorage.setItem(`favourites`, JSON.stringify(favourites))
-        }
-        else{
-            alert("erreur")
-            sessionStorage.clear();
-        }
+    const btnAddFav = () =>{
+        return (<button type="button" className="btn btn-header" onClick={() => (props.addFavorites(props.comic), setFavList(true))} > Ajouter aux favoris</button>)
         
     }
 
-    const removeFav = comicName => {
-        let favIndex = favourites.indexOf(comicName);
-        if(favourites.indexOf(comicName) !== -1){
-        favourites.splice(favIndex,1);
-        sessionStorage.setItem(`favourites`, JSON.stringify(favourites))
-        }
+    const btnRemoveFav = () =>{
+        return (<button type="button" className="btn btn-header" onClick={() => (props.removeFavorites(props.comic),setFavList(false))} > Retirer des favoris</button>)
     }
 
-    const comicName = props.comic.title;
-
     return (
+        <Fragment>
         <div className="card">
             <img src={`data:image/jpeg;base64,${props.comic.coverImage}`} />
             <span className="cardBtn">
-                <button type="button" className="btn btn-header">Détail</button>
-                <button type="button" className="btn btn-light" onClick={() => (manageFavorites(comicName))} ><Star color={favColor} /></button>
+                <button type="button" className="btn btn-header" onClick={() => props.detailModal(props.comic)}>Détail</button>
+                {(favList || props.favColor == "red") ? btnRemoveFav() : btnAddFav()}
             </span>
-        </div >)
+        </div >
+        <Detail comic= {props.comic}/></Fragment>)
 
 
 }

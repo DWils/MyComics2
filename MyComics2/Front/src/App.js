@@ -16,21 +16,17 @@ class App extends Component {
   state = {
     category,
     comics: [],
-    // favorites : JSON.parse(localStorage.getItem('favorites'))
+    favourites: JSON.parse(localStorage.getItem('favorites'))
   };
 
-  async componentDidMount() {
-    let response = await fetch(`http://localhost:55688/comics`);
-    const comics = await response.json();
-    this.setState({ comics });
-  }
+
 
 
   render() {
-   
 
     const categoryName = Object.keys(this.state.category).map(key => {
       return (
+
         <Tuiles name={key} />
       )
     })
@@ -65,10 +61,9 @@ class App extends Component {
           </div>
         </div>
 
-
-        <ComicsSlider sliderName='Rechercher une BD'/>
-
-
+        {/* //////Liste de Comics////// */}
+        <ComicsSlider sliderName='Rechercher une BD' />
+        {/* //////Pied de Page////// */}
         <Footer />
 
 
