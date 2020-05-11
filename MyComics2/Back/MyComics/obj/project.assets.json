@@ -12944,11 +12944,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Développement\\Projet\\MyComics2\\Back\\MyComics\\MyComics.csproj",
+      "projectUniqueName": "D:\\Développement\\Projet\\MyComicsGitHub\\MyComics\\MyComics2\\Back\\MyComics\\MyComics.csproj",
       "projectName": "MyComics",
-      "projectPath": "D:\\Développement\\Projet\\MyComics2\\Back\\MyComics\\MyComics.csproj",
+      "projectPath": "D:\\Développement\\Projet\\MyComicsGitHub\\MyComics\\MyComics2\\Back\\MyComics\\MyComics.csproj",
       "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-      "outputPath": "D:\\Développement\\Projet\\MyComics2\\Back\\MyComics\\obj\\",
+      "outputPath": "D:\\Développement\\Projet\\MyComicsGitHub\\MyComics\\MyComics2\\Back\\MyComics\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
