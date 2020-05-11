@@ -27,7 +27,8 @@ const Card = props => {
                 {(favList || props.favColor == "red") ? btnRemoveFav() : btnAddFav()}
             </span>
         </div >
-        <Detail comic= {props.comic}/></Fragment>)
+        {/* <Detail comic= {props.comic}/>*/}
+        </Fragment>) 
 
 
 }

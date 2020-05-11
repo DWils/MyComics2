@@ -1,8 +1,8 @@
 import React, { useState, Fragment } from 'react';
 import Axios from 'axios';
 import Header from './Header'
+import { Modal, Button } from 'antd'
 import 'bootstrap/dist/css/bootstrap.css';
-import { Button , Modal} from 'antd';
 
 const Subscribe = () => {
 
@@ -33,44 +33,47 @@ const Subscribe = () => {
             })
     };
 
+    const handleCancel = e => {
+        setVisible(false)
+    };
+
     const handleChange = e => {
         e.preventDefault();
         subscriber[e.target.name] = e.target.value;
     };
     return (
-        <div>
+        <Fragment>
             <Button type="inscription" className="btn-modal-inscription" onClick={showModal}>
                 Inscription
-            </Button>
-            <Modal title="Inscription"
+        </Button>
+            <Modal
+                title="Inscription"
                 visible={visible}
-                onOk={}>
-
-                <div>
-                    <form id="comicsForm" className="form-customer" onSubmit={submit}>
-                        <div className="row">
-
-                            <input onChange={handleChange} name="nickname" id="form-login" type="text" placeholder="Login" className="col form-control m-1" />
-                        </div>
-                        <div className="row">
-
-                            <input onChange={handleChange} name="pass" id="form-password" type="text" placeholder="Password" className="col form-control m-1" />
-                        </div>
-                        <div className="row">
-
-                            <input onChange={handleChange} name="verificationpass" id="form-password-confirm" type="text" placeholder="Confirm your password" className="col form-control m-1" />
-                        </div>
-                        <div className="row">
-
-                            <input onChange={handleChange} name="email" id="form-email" type="text" placeholder="Enter your email" className="col form-control m-1" />
-                        </div>
-                        <button className="col btn btn-header form-control m-1" type="submit">Valider</button>
-                    </form>
+                onOk={submit}
+                onCancel={handleCancel}
+                okButtonProps={{ disabled: false }}
+                cancelButtonProps={{ disabled: false }}
+                footer={[
+                    <Button key="back" onClick={handleCancel}>
+                        Return
+                    </Button>,
+                    <Button key="submit" type="primary" onClick={submit}>
+                        Submit
+                    </Button>,
+                ]}
+            >
+                <div className="form-customer">
+                    <label htmlFor="">Identifiant :</label>
+                    <input onChange={handleChange} value={subscriber.nickname} name="nickname" id="form-login" type="text" placeholder="Identifiant" />
+                    <label htmlFor="">Mot de Passe :</label>
+                    <input onChange={handleChange} value={subscriber.pass} name="pass" id="form-password" type="text" placeholder="mot de passe" />
+                    <label htmlFor="">Confirmez votre mot de passe :</label>
+                    <input onChange={handleChange} value={subscriber.passverification} name="verificationPass" id="form-password-confirm" type="text" placeholder="Confirmez votre mot de passe" />
+                    <label htmlFor="">Email :</label>
+                    <input onChange={handleChange} value={subscriber.email} name="email" id="form-email" type="text" placeholder="Entrez votre adresse mail" />
                 </div>
             </Modal>
-        </div>
-
-
+        </Fragment>
     );
 }
 export default Subscribe;

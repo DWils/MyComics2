@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from './img/logo.svg';
 import { Link } from 'react-router-dom';
 import Axios from 'axios'
+import Subscribe from './Subscribe'
 
 const Header = () => {
 
@@ -51,7 +52,7 @@ const Header = () => {
                 <input type="password" class="form-control input-header" aria-label="password" aria-describedby="basic-addon1" name="pass" onChange={handleChange}></input>
             </div>
             <button type="submit" className="btn btn-header">Connexion</button>
-        </form><div><Link to="/subscribe" className="btn btn-header">Inscription</Link></div></div>)
+        </form><Subscribe>Inscription</Subscribe></div>)
     }
 
     const connectionSucceed = () => {
