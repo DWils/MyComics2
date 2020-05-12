@@ -2,6 +2,7 @@ import React, { useState, Fragment } from 'react';
 import Axios from 'axios';
 import Header from './Header'
 import { Modal, Button } from 'antd'
+import './Subscribe.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const Subscribe = () => {
@@ -22,15 +23,19 @@ const Subscribe = () => {
 
     const submit = event => {
         event.preventDefault()
-        console.log(subscriber);
-        Axios.post("http://localhost:55688/customer", subscriber)
-            .then(response => {
-                if (response.id > 0) {
-                    alert("vous êtes maintenant enregistré, il ne reste plus qu'a vous connecter:)");
-                } else {
-                    alert("une erreur s'est produite, veuillez contacter un administrateur");
-                }
-            })
+        if (subscriber.pass != subscriber.verificationPass) {
+            alert("les mdp ne sont pas les mêmes")
+        } else {
+            console.log(subscriber);
+            Axios.post("http://localhost:55688/customer", subscriber)
+                .then(response => {
+                    if (response.data.id > 0) {
+                        alert("vous êtes maintenant enregistré, il ne reste plus qu'a vous connecter:)");
+                    } else {
+                        alert("une erreur s'est produite, veuillez contacter un administrateur");
+                    }
+                })
+        }
     };
 
     const handleCancel = e => {
@@ -43,9 +48,7 @@ const Subscribe = () => {
     };
     return (
         <Fragment>
-            <Button type="inscription" className="btn-modal-inscription" onClick={showModal}>
-                Inscription
-        </Button>
+            <button type="button" className="btn btn-header" onClick={showModal}>Inscription</button>
             <Modal
                 title="Inscription"
                 visible={visible}
@@ -64,13 +67,13 @@ const Subscribe = () => {
             >
                 <div className="form-customer">
                     <label htmlFor="">Identifiant :</label>
-                    <input onChange={handleChange} value={subscriber.nickname} name="nickname" id="form-login" type="text" placeholder="Identifiant" />
+                    <input onChange={handleChange} name="nickname" id="form-login" type="text" />
                     <label htmlFor="">Mot de Passe :</label>
-                    <input onChange={handleChange} value={subscriber.pass} name="pass" id="form-password" type="text" placeholder="mot de passe" />
+                    <input onChange={handleChange} name="pass" id="form-password" type="text" />
                     <label htmlFor="">Confirmez votre mot de passe :</label>
-                    <input onChange={handleChange} value={subscriber.passverification} name="verificationPass" id="form-password-confirm" type="text" placeholder="Confirmez votre mot de passe" />
+                    <input onChange={handleChange} name="verificationPass" id="form-password-confirm" type="text" />
                     <label htmlFor="">Email :</label>
-                    <input onChange={handleChange} value={subscriber.email} name="email" id="form-email" type="text" placeholder="Entrez votre adresse mail" />
+                    <input onChange={handleChange} name="email" id="form-email" type="text" />
                 </div>
             </Modal>
         </Fragment>
