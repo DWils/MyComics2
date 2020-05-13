@@ -3,6 +3,7 @@ import logo from './img/logo.svg';
 import { Link } from 'react-router-dom';
 import Axios from 'axios'
 import Subscribe from './Subscribe'
+import AddComics from './AddComics'
 
 const Header = () => {
 
@@ -57,7 +58,7 @@ const Header = () => {
 
     const connectionSucceed = () => {
         return(<div><p>{member.nickname}</p>
-        <Link to="/addComics" className="btn btn-header">Ajouter un Comics</Link></div>)
+        <AddComics/></div>)
     }
 
     return (

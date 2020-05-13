@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from 'react';
 import Axios from 'axios';
-import Header from './Header'
 import { Modal, Button } from 'antd'
 import './Subscribe.css';
 import 'bootstrap/dist/css/bootstrap.css';
