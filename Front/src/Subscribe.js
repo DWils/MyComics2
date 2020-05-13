@@ -30,8 +30,10 @@ const Subscribe = () => {
                 .then(response => {
                     if (response.data.id > 0) {
                         alert("vous êtes maintenant enregistré, il ne reste plus qu'a vous connecter:)");
+                        window.location.reload(false);
                     } else {
                         alert("une erreur s'est produite, veuillez contacter un administrateur");
+                        window.location.reload(false);
                     }
                 })
         }

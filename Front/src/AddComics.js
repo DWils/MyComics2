@@ -45,9 +45,11 @@ const AddComics = () => {
         Axios.put(`http://localhost:55688/comics/${comicsId}`, comic).then(response => {
             if (response.data.id > 0) {
                 alert("votre oeuvre a bien été enregistré")
+                window.location.reload(false);
             }
             else {
                 alert("erreur serveur")
+                window.location.reload(false);
             }
         })
     }
@@ -62,6 +64,7 @@ const AddComics = () => {
             if (response.data.id > 0) {
                 alert(`image envoyée votre oeuvre est enregistré au n° ${response.data.id}`)
                 setComicsId(response.data.id)
+                
             }
             else {
                 alert("erreur serveur");
@@ -111,8 +114,7 @@ const AddComics = () => {
                             <div className="custom-file">
 
                                 <label htmlFor="">Couverture :</label>
-                                <input type="file" onChange={changeImage} className="custom-file-input" id="customFile" name="image" accept="image/png, image/jpeg" />
-                                <label className="custom-file-label" htmlFor="customFile"></label>
+                                <input type="file" onChange={changeImage} name="image" accept="image/png, image/jpeg" />
                             </div>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" onClick={uploadImage} type="button">Upload</button>
