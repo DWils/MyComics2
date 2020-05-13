@@ -1,0 +1,123 @@
+/* cards slider */
+.cards-slider {
+  margin: 20px;
+}
+.cards-slider-wrapper {
+  display: flex;
+  justify-content : center;
+}
+    
+.card {
+  width: 250px;
+  height: 350px;
+  background-color: transparent;
+  position: relative;
+  display: inline-block;
+  cursor: pointer ;
+}
+.card:hover .cardBtn{
+  width: 250px;    
+  
+}
+
+.card img{
+  display : block;
+  width: 250px;
+  height: 350px;
+}
+
+.cardBtn{
+  width: 0px;
+  height: 350px;
+  background-color: rgba(255, 218, 6, 0.384);
+  position: absolute;
+  top : 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.05s ease;
+} 
+  
+  
+  
+/* recherche BD */
+$primary: #FFDB06;
+$secondary: rgb(184, 156, 1);
+$white: #fff;
+
+.form__group {
+  position: relative;
+  padding: 20px 0 0;
+  margin-top: 10px;
+  margin-left : 15%;
+  width: 70%;
+}
+  
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid $primary;
+  outline: 0;
+  font-size: 1.5rem;
+  color: $white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  
+  &::placeholder {
+    color: transparent;
+  }
+  
+  &:placeholder-shown ~ .form__label {
+    font-size: 2rem;
+    cursor: text;
+    top: 10px;
+  }
+}
+  
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 3rem;
+  color: $primary;
+}
+  
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1.5rem;
+    color: $primary;
+    font-weight:700;    
+  }
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image-slice: 1;
+}
+
+.form__field:not(:placeholder-shown) {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1.5rem;
+    color: $primary;
+    font-weight:700;    
+  }
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image-slice: 1;
+}
+
+  
