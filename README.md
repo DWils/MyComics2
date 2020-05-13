@@ -6,7 +6,7 @@ Pour démarrer le projet, merci d'installer les outils suivants (pour la partie 
 - node module :  npm install
 - react-router-dom : npm install react-router-dom
 - bootstrap : npm install react-bootstrap bootstrap
-- ant design : npm install ant-d
+- ant design : npm install antd
 - slick carousel : npm install slick-carousel
 
 Pour afficher et créer les comics, il est nécessaire de démarrer la solution (partie Back) MyComics.sln et demarrer le débuggage.
