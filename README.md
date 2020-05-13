@@ -1,5 +1,5 @@
 # MyComics
-version du TP fil rouge M2I, technos : asp.Net et React.js. contribution : Pierre-Alexis , Pauline , Henri , David(moi)
+version du TP fil rouge M2I, technos : asp.Net et React.js. contribution : Pauline, Pierre-Alexis, Henri, David(moi)
 
 Pour démarrer le projet, merci d'installer les outils suivants (pour la partie Front) :
 
