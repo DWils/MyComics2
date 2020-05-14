@@ -7,12 +7,14 @@ import AddComics from './AddComics'
 
 const Header = () => {
 
+    
+
     const subscriber =
     {
         'nickname': '',
         'pass': ''
     };
-
+    const [vosFav, setVosFav] = useState([])
     const [identity, setIdentity] = useState(false);
     const [member, setMember] = useState({
         id : 0,
@@ -23,12 +25,10 @@ const Header = () => {
 
     const authentificate = e => {
         e.preventDefault();
-        console.log(subscriber);
         Axios.post("http://localhost:55688/customer/identification", subscriber)
             .then(response => {
                 if (response.data.nickname != null) {
-                    setMember({nickname: response.data.nickname})
-                    console.log(member.nickname);
+                    setMember({nickname: response.data.nickname, id : response.data.id})
                     setIdentity(true);
                 } else {
                     alert("une erreur s'est produite, veuillez revérifier votre mot de passe ou votre pseudo");
@@ -57,8 +57,9 @@ const Header = () => {
     }
 
     const connectionSucceed = () => {
-        return(<div><p>{member.nickname}</p>
-        <AddComics/></div>)
+        sessionStorage.setItem('connectedMember',member.nickname)
+        const connectedMember = sessionStorage.getItem('connectedMember')
+        return(<div><p>{connectedMember}</p><AddComics/></div>)
     }
 
     return (

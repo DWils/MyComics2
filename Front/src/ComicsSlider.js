@@ -31,6 +31,7 @@ const ComicsSlider = ({ sliderName }) => {
                 .get(`http://localhost:55688/comics/recherche/${recherche}`)
                 .then(response => {
                     setComics(response.data);
+                    
 
                 })
                 .catch(err => console.log(err))
@@ -89,6 +90,7 @@ const ComicsSlider = ({ sliderName }) => {
         favourites.push(comic)
         localStorage.setItem(`favourites`, JSON.stringify(favourites))
         alert(`${comic.title} a été ajouté de vos favoris`)
+        
     }
 
     const removeFavorites = comic => {
@@ -97,6 +99,7 @@ const ComicsSlider = ({ sliderName }) => {
         favourites.splice(favIndex, 1);
         localStorage.setItem(`favourites`, JSON.stringify(favourites))
         alert(`${comic.title} a été retiré de vos favoris`)
+        window.location.reload();
     }
 
     const mesFav = () => {

@@ -86,7 +86,7 @@ const AddComics = () => {
                     <Button key="back" onClick={handleCancel}>
                         Return
                     </Button>,
-                    <Button key="submit" type="primary" onClick={sendForm}>
+                    <Button key="submit" type="primary" onClick={sendForm} disabled={(comicsId > 0) ? false : true}>
                         Envoyer
                     </Button>,
                 ]}
